@@ -1,0 +1,40 @@
+
+// 默认主题
+$bg-color: rgb(243, 51, 51);//背景色
+
+
+
+
+// 主题1
+$one-theme : (
+  bg-color: rgb(243, 51, 51),//背景色
+  text-color:#fff,//字体颜色
+);
+// 主题2
+$tow-theme : (
+  bg-color: rgb(43, 41, 41),//背景色
+  text-color: #000,//字体颜色
+);
+
+//定义主题对象
+$themes: (// key为主题  value为主题的变量集合
+  default-theme: $one-theme,
+  wh-theme: $tow-theme
+);
+
+// 生成主题背景色样式
+@mixin base-background($bg-color) {
+    @each $themename, $theme in $themes {
+        [data-theme="#{$themename}"] & {
+            background-color: map-get($map: $theme, $key: $bg-color) !important;
+        }
+    }
+}
+// 生成主题字体色样式
+@mixin text-color($text-color) {
+    @each $themename, $theme in $themes {
+        [data-theme="#{$themename}"] & {
+            color: map-get($map: $theme, $key: $text-color) !important;
+        }
+    }
+}
