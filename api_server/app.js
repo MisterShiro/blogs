@@ -8,7 +8,7 @@ app.use(cors())
 // 解析表单数据
 app.use(express.urlencoded({ extended: false }))
 
-// 响应数据的中间件
+// 响应数据
 app.use((req, res, next) => {
     res.err = function (err) {
         res.send({
@@ -33,10 +33,12 @@ app.use((req, res, next) => {
 const homeRouter = require('./router/home')
 app.use('/home', homeRouter)
 
-// 错误级别中间件
+// 错误处理
 app.use((err,req,res,next)=>{
-    console.log('错误级别中间件');
+    res.err(err)
 })
+
+
 
 // 启动路由服务器
 app.listen(2244, () => {
