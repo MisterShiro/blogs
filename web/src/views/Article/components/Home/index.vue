@@ -8,7 +8,7 @@
     </div>
     <!-- 文章列表 -->
     <div class="articleList shadow">
-      <div class="item" v-for="item in 10" :key="item">
+      <div class="item" v-for="item in articleList" :key="item.id">
         <div class="imgbox cursor">
           <img  src="../../../../assets/images/home/fill.jpg" alt="" />
         </div>
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { getActicle } from "@/api/home";
 export default {
   name: "Home",
   data() {
@@ -53,10 +54,18 @@ export default {
       ],
     };
   },
+  created(){
+    this.getActicle()
+  },
   methods: {
     toDetails(){
       this.$router.push('article-details')
-    }
+    },
+    async getActicle(){
+      const res = await getActicle()
+      this.articleList=res.data.data
+      console.log(res);
+    },
   },
 };
 </script>

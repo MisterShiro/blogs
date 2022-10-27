@@ -12,7 +12,7 @@ export default [
                 alwaysShow: true,
                 meta: {
                     keepAlive: false, // 是否缓存组件
-                    title: '夕洛的小窝', // 路由中文名称
+                    title: 'Shiro of World', // 路由中文名称
                 },
             },
             {
