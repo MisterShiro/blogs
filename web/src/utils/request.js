@@ -1,8 +1,6 @@
 // 封装axios
 import axios from 'axios'
 
-
-
 const service = axios.create({
     baseURL: 'http://127.0.0.1:2244',
     timeout: 1000,
